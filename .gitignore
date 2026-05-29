@@ -1,0 +1,7 @@
+.paper_agent/secrets/
+.paper_agent/work/
+library/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+*.egg-info/
