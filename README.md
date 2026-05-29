@@ -31,20 +31,6 @@ Use Seed2.0 Pro as the default model for the main pipeline:
 
 KIMI-K2.5 is useful as a second auditor, lower-cost batch reviewer, or alternate writer when its output style fits the target field better.
 
-## API Key Security
-
-Do not write API keys into source files, command examples, README files, or shell scripts.
-
-Seed2.0 Pro credentials are stored in an encrypted local file. The encrypted file is protected by a PIN-derived key using PBKDF2-HMAC-SHA256 and Fernet authenticated encryption. The PIN itself is never saved. At runtime, the CLI asks for the PIN and decrypts the API key in memory before calling the API.
-
-The default encrypted credential path is ignored by git:
-
-```text
-.paper_agent/secrets/seed2-pro.enc.json
-```
-
-Because API keys can be compromised if pasted into shared logs or chats, rotate the key in the provider console if it was exposed outside your local machine.
-
 ## Architecture
 
 ```text
