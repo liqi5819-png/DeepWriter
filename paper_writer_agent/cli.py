@@ -86,6 +86,7 @@ def _ingest(args: argparse.Namespace) -> int:
         encoding="utf-8",
     )
     print(f"Stored paper: {stored.paper_md}")
+    print("Metadata and quality report are embedded in the Markdown front matter.")
     print(f"Quality complete: {result.quality_report.complete}")
     return 0
 

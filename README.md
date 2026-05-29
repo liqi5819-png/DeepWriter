@@ -84,7 +84,8 @@ Repair Loop
   |
   v
 Paper Library
-  - stores paper.md, metadata.json, quality_report.json by keyword
+  - stores one Markdown file per paper
+  - embeds keywords, metadata, and quality report in front matter
   |
   v
 Writing Context Collector
@@ -124,11 +125,7 @@ Runtime output:
       quality_report.json
       paper.final.md
 library/
-  keyword/
-    paper_id/
-      paper.md
-      metadata.json
-      quality_report.json
+  paper_id.md
 ```
 
 ## Setup
@@ -246,6 +243,7 @@ The current tests cover:
 
 - Markdown cleanup and section formatting.
 - Keyword-based library storage and search.
+- Flat library storage with one Markdown file per paper.
 - Audit-triggered repair loop behavior.
 
 ## Current Status

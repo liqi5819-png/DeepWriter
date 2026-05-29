@@ -44,7 +44,7 @@ The default repair loop count is one. Intermediate artifacts are cached under `.
 
 ### Paper Library
 
-The library stores `paper.md`, `metadata.json`, and `quality_report.json` under keyword-specific directories. Keyword search is implemented first; embedding retrieval can be added later.
+The library stores one Markdown file per paper directly under `library/`. Keywords, source PDF, and the quality report summary are embedded in Markdown front matter. Keyword search scans front matter and body text; embedding retrieval can be added later.
 
 ### Writing Context Collector
 

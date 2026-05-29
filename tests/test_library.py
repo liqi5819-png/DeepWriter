@@ -3,7 +3,7 @@ from paper_writer_agent.markdown_builder import build_markdown
 from paper_writer_agent.models import ExtractedPaper, ExtractedSection, PaperMetadata
 
 
-def test_library_stores_paper_under_each_keyword_and_searches(tmp_path):
+def test_library_stores_single_markdown_with_front_matter_and_searches(tmp_path):
     library = PaperLibrary(tmp_path / "library")
     paper = ExtractedPaper(
         paper_id="paper-1",
@@ -31,8 +31,13 @@ def test_library_stores_paper_under_each_keyword_and_searches(tmp_path):
     )
 
     assert stored.paper_md.exists()
-    assert (tmp_path / "library" / "immunology" / "paper-1" / "paper.md").exists()
-    assert (tmp_path / "library" / "tumor" / "paper-1" / "metadata.json").exists()
+    assert stored.paper_md == tmp_path / "library" / "paper-1.md"
+    assert not (tmp_path / "library" / "immunology").exists()
+
+    stored_text = stored.paper_md.read_text(encoding="utf-8")
+    assert "keywords: immunology, tumor" in stored_text
+    assert "quality_complete: true" in stored_text
+    assert "# Tumor Immune Microenvironment" in stored_text
 
     results = library.search("immunotherapy")
 
